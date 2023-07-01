@@ -30,7 +30,8 @@ const SearchData = () => {
       item?.description?.toLowerCase().includes(search.toLowerCase()) ||
       item?.foodCode?.toLowerCase().includes(search.toLowerCase()) ||
       item?.description?.toLowerCase().includes(search.toLowerCase()) ||
-      item?.foodCode?.toLowerCase().includes(search.toLowerCase())
+      item?.foodCode?.toLowerCase().includes(search.toLowerCase())||
+      item?.dataType?.toLowerCase().includes(search.toLowerCase())
   );
   console.log(food.length);
   
@@ -73,9 +74,9 @@ const SearchData = () => {
             value="Search"
             className="px-4 py-2 ml-2 text-white bg-blue-500 rounded-md cursor-pointer hover:bg-blue-600"
           />
-          <p>
+          <p className="mx-4 ">
             {errors.Search && (
-              <span className="text-red-500">{errors.Search.message}</span>
+              <span className="text-red-500/30">{errors.Search.message}</span>
             )}
           </p>
         </form>
