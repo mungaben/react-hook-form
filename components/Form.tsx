@@ -22,12 +22,12 @@ const Form = () => {
   });
   const onsubmit:SubmitHandler<FieldValues>=(data)=>{
     console.log("dfata",data);
-    console.log("errors",errors);
+    
     
     
   }
   return (
-    <div className="flex items-center justify-center mt-10 text-black ">
+    <div className="flex items-center justify-center mt-10 text-black bg-white ">
       <form onSubmit={handleSubmit(onsubmit)} className="flex flex-col ">
         <input {...register("name",{required:true})} type="text" placeholder="name" />
         <p className="bg-red-200 ">
