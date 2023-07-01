@@ -15,51 +15,50 @@ type Formtypes = {
   input5: string;
 };
 export const englishKings = [
-    'William I',
-    'William II',
-    'Henry I',
-    'Stephen',
-    'Henry II',
-    'Richard I',
-    'John',
-    'Henry III',
-    'Edward I',
-    'Edward II',
-    'Edward III',
-    'Richard II',
-    'Henry IV',
-    'Henry V',
-    'Henry VI',
-    'Edward IV',
-    'Edward V',
-    'Richard III',
-    'Henry VII',
-    'Henry VIII',
-    'Edward VI',
-    'Mary I',
-    'Elizabeth I',
-    'James I',
-    'Charles I',
-    'Charles II',
-    'James II',
-    'William III',
-    'Mary II',
-    'Anne',
-    'George I',
-    'George II',
-    'George III',
-    'George IV',
-    'William IV',
-    'Victoria',
-    'Edward VII',
-    'George V',
-    'Edward VIII',
-    'George VI',
-    'Elizabeth II',
-  ];
-  
+  "William I",
+  "William II",
+  "Henry I",
+  "Stephen",
+  "Henry II",
+  "Richard I",
+  "John",
+  "Henry III",
+  "Edward I",
+  "Edward II",
+  "Edward III",
+  "Richard II",
+  "Henry IV",
+  "Henry V",
+  "Henry VI",
+  "Edward IV",
+  "Edward V",
+  "Richard III",
+  "Henry VII",
+  "Henry VIII",
+  "Edward VI",
+  "Mary I",
+  "Elizabeth I",
+  "James I",
+  "Charles I",
+  "Charles II",
+  "James II",
+  "William III",
+  "Mary II",
+  "Anne",
+  "George I",
+  "George II",
+  "George III",
+  "George IV",
+  "William IV",
+  "Victoria",
+  "Edward VII",
+  "George V",
+  "Edward VIII",
+  "George VI",
+  "Elizabeth II",
+];
+
 const Register = () => {
-    const [kings, setkings] = useState(englishKings);
   const {
     handleSubmit,
     register,
@@ -67,7 +66,6 @@ const Register = () => {
     watch,
     formState: { errors, isSubmitSuccessful },
   } = useForm<Formtypes>({
-   
     defaultValues: {
       name: "",
       email: "",
@@ -82,43 +80,40 @@ const Register = () => {
     },
   });
   const onSubmmit = (data: Formtypes) => {
-    console.log("data available", data.email);
+    console.log("data available", data.name);
   };
   const watchInput = watch("name");
-  const newkings= englishKings.filter((item) => item.toLowerCase().includes(watchInput.toLowerCase()));
-  console.log("englishKings", newkings);
-  
+  const newkings = englishKings.filter((item) =>
+    item.toLowerCase().includes(watchInput.toLowerCase())
+  );
+
+
   console.log(watchInput);
   if (watchInput) {
-    
-  console.log("watchInput", watchInput);
- 
-    
+    console.log("watchInput", watchInput);
   }
   useEffect(() => {}, [isSubmitSuccessful]);
   return (
     <div className="flex flex-col justify-center w-full mt-40 mb-20 ">
-        <div className="flex flex-col items-center justify-center w-40 mx-auto mt-20 mb-10 overflow-y-auto bg-white h-28">
-        {newkings.length > 0 ?
-        newkings.map((item, index) => 
-        <h1 className="flex items-center justify-center p-5 mx-auto text-black" key={index}>
-        <p className="text-lg ">
-            {item}
-        </p>
-        </h1>
-        ): (
-            <div>
-                <h1 className="flex items-center justify-center p-5 mx-auto text-black" >
-                <p className="text-lg ">
-                    NO king
-                </p>
-                </h1>
-            </div>
-        )
-    }
-        </div>
- 
-     
+      <div className="flex flex-col items-center justify-center w-40 mx-auto mt-20 mb-10 overflow-y-auto bg-white h-28">
+        {newkings.length > 0 ? (
+          newkings.map((item, index) => (
+            <h1
+              className="flex items-center justify-center p-5 mx-auto text-black"
+              key={index}
+            >
+              <p className="text-lg ">{item}</p>
+            </h1>
+          ))
+        ) : (
+          <div>
+            <h1 className="flex items-center justify-center p-5 mx-auto text-black">
+              <p className="text-lg ">NO king</p>
+            </h1>
+          </div>
+        )}
+      </div>
+
       <form
         className="p-4 mx-auto overflow-hidden font-serif text-gray-800 bg-gray-200 rounded-lg shadow-md text-start"
         onSubmit={handleSubmit(onSubmmit)}
@@ -141,13 +136,15 @@ const Register = () => {
                 value: 30,
                 message: "Name must be less than 30 characters",
               },
-            //   validate: (value) => {
-            //     const isben = value.includes("ben");
-            //     console.log("isben", isben);
-
-            //     return isben ? "owner" : value;
-            //   },
-            //   valueAsNumber: true,
+                validate: (value) => {
+                    const newkingsva = englishKings.filter((item) =>
+                    item.toLowerCase().includes(value.toLowerCase())
+                  );
+                  console.log("isok",newkingsva[0]);
+                  
+                  return newkingsva[0]
+                },
+             
             })}
             // type="number"
             id="name"
@@ -159,7 +156,7 @@ const Register = () => {
             <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>
           )}
         </div>
-        
+
         <button
           type="submit"
           className="px-4 py-2 mt-4 text-white bg-blue-500 rounded hover:bg-blue-600"
