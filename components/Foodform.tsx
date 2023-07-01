@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import useFoodStore from "../Hooks/foodstore";
+import { useForm } from "react-hook-form";
 
 type showhideenum = "show" | "hide";
 const Foodform = () => {
@@ -16,6 +17,16 @@ const Foodform = () => {
     setSelectedFood(index);
     setShownutrients(!shownutrients);
   };
+
+
+
+
+
+
+
+
+
+
 
   return (
     <div className="px-8 py-4 bg-gray-100">
@@ -64,6 +75,10 @@ const Foodform = () => {
             <p className="text-red-500">No food data available</p>
           </div>
         )}
+      </div>
+
+      <div>
+    
       </div>
     </div>
   );
