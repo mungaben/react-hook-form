@@ -1,3 +1,4 @@
+import Foodform from '@/components/Foodform'
 import Form from '@/components/Form'
 import Register from '@/components/Register'
 import UseForm from '@/components/UseForm'
@@ -12,6 +13,7 @@ export default function Home() {
     <UseForm/>
     {/* <Register/> */}
     {/* <Validate/> */}
+    <Foodform/>
 
    </div>
   )

@@ -17,6 +17,8 @@
 }
 
 body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,4 +26,9 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+/* hide scrollbar for chrome, safari and opera */
+.container::-webkit-scrollbar {
+  display: none;
 }
